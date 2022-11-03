@@ -5,16 +5,7 @@
 	<head>
 		<title>Page Title</title>
 		<!-- <link rel="icon" type="image/x-icon" href="some icon" /> -->
-		<style>
-			table {
-				border-collapse: collapse;
-				width: 100%;
-			}
-			th,
-			td {
-				border: 2px solid violet;
-			}
-		</style>
+		<link rel="stylesheet" href="index.css">
 	</head>
 	<!-- <body> shows the body of the webpage-->
 	<body>
@@ -33,7 +24,9 @@
 		<a href="http://www.google.com" target="_blank" style="color: red; background-color: ghostwhite">Google</a>
 
 		<!-- <img src="" alt="Alternate text to describe image" height="" width=""/> -->
-
+        
+        <hr>
+        <h3>Table</h3>
 		<table>
 			<thead>
 				<tr>
@@ -60,5 +53,79 @@
 				</tr>
 			</tbody>
 		</table>
+
+        <hr>
+        <h3>Lists</h3>
+		<ul>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JS</li>
+			<li>React</li>
+		</ul>
+		<ol>
+			<li>jQuery</li>
+			<li>Angular</li>
+			<li>Handlebar</li>
+			<li>Jinja</li>
+		</ol>
+
+        <hr>
+        <h3>Block and Inline Elements</h3>
+		<div>Classic Block Container</div>
+		<div>Block level elements take up whole width of a row</div>
+		<span>Classic Inline Container</span>
+		<p>Inline tags stay in the same line vs block goes to next line</p>
+		<p>Strong and em tags are inline tags</p>
+		<p><strong> Inline Strong text</strong> <em>Inline Emphasized text</em></p>
+		
+        <hr>
+		<h3>Class and ID</h3>
+		<p>Unique Identifier</p>
+		<p>Id has higher priority over class</p>
+		<p>Between classes whichever comes last in the css styling</p>
+		<p>Inline styles have higher priority</p>
+		<p>Multiple classes can be given to an element</p>
+        
+        <div id="boxA">BOX A</div>
+		<div class="boxC">BOX C</div>
+		<div id="boxB">BOX B</div>
+        
+        <hr>
+		<h3>Order of importance</h3>
+        <span>class &#60 id &#60 inline style &#60 !important</span>
+
+        <hr>
+
+        <section>
+        <h3>Forms</h3>
+        <form id="my-form">
+            <label for="name">
+                Name:
+                <input id="name" type="text" placeholder="Enter your name" required>
+            </label>
+
+            <label for="email">
+                Email:
+                <input id="email" type="email" placeholder="Enter your email" required>
+            </label>
+
+            <label for="password">
+                Password:
+                <input id="password" type="password" minlength="8" maxlength="12" required>
+            </label>
+
+            <label for="avatar">
+                Avatar:
+                <input id="avatar" type="file" required>
+            </label>
+
+            <label for="search">
+                Search:
+                <input id="search" type="search">
+            </label>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 	</body>
 </html>
