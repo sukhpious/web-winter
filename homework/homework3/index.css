@@ -1,0 +1,105 @@
+body {
+	font-family: "Times New Roman", Times, serif;
+	background-color: black;
+}
+.container {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+header {
+	width: 25%;
+}
+.wrap-nav {
+	background-color: #2e137a;
+}
+main {
+	background-color: #ffd17a;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 75%;
+}
+h2 {
+	color: #6dbb3e;
+	font-size: 4em;
+	text-align: center;
+	letter-spacing: 2px;
+	width: 100%;
+	margin: 10px 10px 0 0;
+	height: 10px;
+}
+h2 > span {
+	font-size: 0.6em;
+	color: #6dbb3e;
+}
+h2 span:nth-child(2) {
+	font-size: 1em;
+	color: #ffffff;
+	text-transform: capitalize;
+}
+nav ul li {
+	list-style: none;
+}
+nav ul > li:nth-child(18) {
+	font-size: 1.2em;
+	text-decoration: underline;
+	margin-bottom: 10px;
+}
+.contact-us {
+	color: white !important;
+	font-weight: 300;
+}
+
+nav ul > li:nth-child(23) {
+	font-size: 1.2em;
+	margin-top: 10px;
+	padding-left: 30px;
+}
+li a {
+	color: #ffd17a;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 0.7em;
+	font-weight: 200;
+}
+
+.contact-info,
+form {
+	width: 40%;
+	padding-left: 40px;
+}
+.contact-info p {
+	font-size: 0.7em;
+	font-weight: 100;
+	margin-top: 20px;
+}
+form {
+	padding-top: 40px;
+}
+label {
+	font-size: 0.7em;
+}
+input {
+	margin-bottom: 12px;
+}
+textarea {
+	width: 100%;
+}
+button {
+	background-color: grey;
+	width: 100px;
+}
+footer {
+	width: 100%;
+	float: right;
+	padding: 10px 5px 0;
+}
+footer p,
+footer a {
+	color: white;
+	text-align: right;
+	font-size: 13px;
+	margin: 0;
+}
