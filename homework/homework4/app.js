@@ -1,45 +1,54 @@
-const month = ["Jan", "Feb", "Mar"];
-//  "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-const date = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-function printCalendar(monArr, dateArr) {
-	let date;
-	for (let i = 0; i < monArr.length; i++) {
-		for (let j = 0; j < dateArr.length; j++) {
-			date = `${monArr[i]} ${dateArr[j]}`;
-			console.log("-", date);
+function discountDay(num) {
+	switch (num) {
+		case 1:
+			console.log("Too Early");
+			break;
+		case 15:
+			console.log("Here is the discount");
+			break;
+		case 30:
+			console.log("Too Late");
+			break;
+		default:
+			console.log("Not a valid date");
+	}
+}
+discountDay(30);
+
+function printNum(numA, numB) {
+	let result = [];
+	while (numB >= numA) {
+		result.push(numA);
+		numA++;
+	}
+	console.log(result);
+	return result;
+}
+
+printNum(1, 50);
+
+const myObj = {
+	name: "Jack",
+	email: "jack@gmail.com",
+	age: 30,
+};
+function objProps(obj) {
+	let keyArr = [];
+	for (let key in obj) {
+		keyArr.push(key);
+	}
+	return keyArr;
+}
+console.log(objProps(myObj));
+
+function calcProfit(priceArr) {
+	for (let i = 0; i < priceArr.length; i++) {
+		console.log("Buy Day", i + 1, "price", priceArr[i]);
+		for (let j = i + 1; j < priceArr.length; j++) {
+			console.log("Sell Day", j + 1 + " price", priceArr[j], ":", priceArr[j], "-", priceArr[i], "=", priceArr[j] - priceArr[i]);
 		}
+		console.log("---");
 	}
 }
 
-printCalendar(month, date);
-
-function cloneArray(arrC) {
-	let copyArr = arrC;
-	console.log("Cloned array", copyArr);
-	return copyArr;
-}
-cloneArray([3, 6, 8, 3, 5, 2, 1]);
-
-function getNthElement(arr, n) {
-	if (typeof arr[n] === "undefined") {
-		console.log("Element does not exist");
-	} else {
-		console.log("Nth Element", arr[n]);
-	}
-}
-getNthElement([4, "Sam", 7, 7, "John", "Jenny", 0, 1, true, 66, false, 2], 5);
-getNthElement([4, "Sam", 7, 7, "John", "Jenny", 0, 1, true, 66, false, 2], 55);
-
-function customPush(arr, item) {
-	let newArr = arr;
-	newArr.push(item);
-	console.log("Custom Push Length", newArr.length);
-}
-customPush([5, 6, 3, 8, 7], 22);
-
-function customPop(arr) {
-	let newArr = arr.pop();
-	console.log("Custom Pop Element", newArr);
-}
-
-customPop([25, 67, 33, 18, 37]);
+calcProfit([315, 50, 314, 684, 100, 648, 132, 50, 98, 45]);
