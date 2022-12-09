@@ -5,6 +5,7 @@ import Left from "./components/Left";
 import NameTag from "./components/NameTag";
 import Right from "./components/Right";
 import SplitPane from "./components/SplitPane";
+import HomeworkForm from "./components/HomeworkForm";
 
 function App() {
 	const elementName = <NameTag name="Bob" age={15} />;
@@ -13,8 +14,9 @@ function App() {
 			<Layout>
 				<SplitPane left={<Left />} right={<Right />} />
 			</Layout>
+			<HomeworkForm />
 
-			<div>{elementName}</div>
+			{/* <div>{elementName}</div> */}
 			{/* <header className="App-header"> */}
 			{/* <img src={logo} className="App-logo" alt="logo" /> */}
 
