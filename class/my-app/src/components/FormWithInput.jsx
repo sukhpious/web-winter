@@ -1,4 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+function CustomInput(props) {
+	const { name, label, type, state, placeholder, handleChange } = props;
+	return (
+		<Fragment>
+			<label htmlFor={name}>
+				{label}:
+				<input id={name} type={type} name={name} placeholder={placeholder} value={state[name]} onChange={handleChange} />
+			</label>
+			<br />
+		</Fragment>
+	);
+}
 
 class FormWithInput extends React.Component {
 	constructor(props) {
@@ -8,6 +21,28 @@ class FormWithInput extends React.Component {
 			email: "",
 			password: "",
 		};
+
+		this.fields = [
+			{
+				id: "username",
+				label: "Username",
+				placeholder: "Enter your name",
+				type: "text",
+			},
+			{
+				id: "email",
+				label: "Email",
+				placeholder: "Enter your email",
+				type: "email",
+			},
+			{
+				id: "password",
+				label: "Password",
+				placeholder: "Enter your password",
+				type: "password",
+			},
+		];
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.resetFormFields = this.resetFormFields.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -15,6 +50,13 @@ class FormWithInput extends React.Component {
 
 	handleSubmit(event) {
 		console.log("the information the user has filled in");
+		const body = {
+			username: this.state.username,
+			email: this.state.email,
+			password: this.state.password,
+		};
+		// this is undefined
+		console.log(body);
 		event.preventDefault();
 	}
 
@@ -49,7 +91,13 @@ class FormWithInput extends React.Component {
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<label htmlFor="username">
+				<h1>Form</h1>
+
+				{this.fields.map(({ id, label, placeholder, type }) => (
+					<CustomInput key={id} label={label} placeholder={placeholder} type={type} state={this.state} handleChange={this.handleChange} />
+				))}
+
+				{/* <label htmlFor="username">
 					Username:
 					<input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
 				</label>
@@ -62,7 +110,7 @@ class FormWithInput extends React.Component {
 				<label htmlFor="password">
 					Password:
 					<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-				</label>
+				</label> */}
 				<br />
 				<input type="reset" value="Reset" onClick={this.resetFormFields} />
 				<br />
