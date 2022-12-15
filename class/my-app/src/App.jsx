@@ -7,20 +7,18 @@ import Right from "./components/Right";
 import SplitPane from "./components/SplitPane";
 import HomeworkForm from "./components/HomeworkForm";
 import FormWithInput from "./components/FormWithInput";
+import Clockb from "./components/ClockB";
 
 function App() {
 	const elementName = <NameTag name="Bob" age={15} />;
 	return (
 		<div className="App">
-			<Layout>
+			{/* <Layout>
 				<SplitPane left={<Left />} right={<Right />} />
-			</Layout>
-			<HomeworkForm />
-			<br />
+			</Layout> */}
+			{/* <HomeworkForm /> */}
 
-			<hr />
-			<br />
-			<FormWithInput />
+			{/* <FormWithInput /> */}
 
 			{/* <div>{elementName}</div> */}
 			{/* <header className="App-header"> */}
@@ -30,6 +28,9 @@ function App() {
 					Learn React
 				</a> */}
 			{/* </header> */}
+
+			<h3>React Hooks</h3>
+			<Clockb />
 		</div>
 	);
 }
