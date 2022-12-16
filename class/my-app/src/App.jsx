@@ -8,6 +8,7 @@ import SplitPane from "./components/SplitPane";
 import HomeworkForm from "./components/HomeworkForm";
 import FormWithInput from "./components/FormWithInput";
 import Clockb from "./components/ClockB";
+import Posts from "./components/Posts";
 
 function App() {
 	const elementName = <NameTag name="Bob" age={15} />;
@@ -17,20 +18,17 @@ function App() {
 				<SplitPane left={<Left />} right={<Right />} />
 			</Layout> */}
 			{/* <HomeworkForm /> */}
-
 			{/* <FormWithInput /> */}
-
 			{/* <div>{elementName}</div> */}
 			{/* <header className="App-header"> */}
 			{/* <img src={logo} className="App-logo" alt="logo" /> */}
-
 			{/* <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
 					Learn React
 				</a> */}
 			{/* </header> */}
-
-			<h3>React Hooks</h3>
-			<Clockb />
+			{/* <h3>React Hooks</h3> */}
+			{/* <Clockb /> */}
+			<Posts />
 		</div>
 	);
 }
