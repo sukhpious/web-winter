@@ -10,6 +10,9 @@ import FormWithInput from "./components/FormWithInput";
 import Clockb from "./components/ClockB";
 import Posts from "./components/Posts";
 import UsersB from "./components/UsersB";
+import SimpleBank from "./components/SimpleBank";
+import { PizzaStore } from "./components/PizzaStore";
+import UsersC from "./components/UsersC";
 
 function App() {
 	const elementName = <NameTag name="Bob" age={15} />;
@@ -29,7 +32,7 @@ function App() {
 			{/* </header> */}
 			{/* <h3>React Hooks</h3> */}
 			{/* <Clockb /> */}
-			<UsersB />
+			<UsersC />
 		</div>
 	);
 }
