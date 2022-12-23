@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setUsers } from "../redux/usersC/userActions";
+import axios from "axios";
+import { removeUser, setUsers } from "../redux/usersC/userActions";
 
 const UsersC = () => {
 	const dispatch = useDispatch();
 	// Users Array
 	const usersC = useSelector((state) => state.usersC);
 	//Input User id
-	const [userId, setUserId] = useState();
+	const [userId, setUserId] = useState(0);
 	// Remaning Users
-	const [userList, setUserList] = useState([]);
+	// const [userList, setUserList] = useState([]);
 	// Deleted User
-	const [userRemoved, setUserRemoved] = useState([]);
+	// const [userRemoved, setUserRemoved] = useState([]);
 
-	useEffect(() => {
+	// -------- **************** --------//
+	// -------- One Way to write logic in component --------//
+
+	/* useEffect(() => {
 		const url = `https://jsonplaceholder.typicode.com/users`;
 		fetch(url)
 			.then((response) => response.json())
@@ -23,17 +27,38 @@ const UsersC = () => {
 			});
 	}, []);
 
+	const handleRemoveUser = () => {
+		let resultArr = usersC.filter((user) => user.id !== userId);
+		let removedUser = usersC.filter((user) => user.id === userId);
+		
+		//to dispatch users from here to store
+		const action = setUsers(resultArr);
+		dispatch(action);
+		
+		//set up users
+		setUserList(resultArr);
+		setUserRemoved(removedUser);
+	 }; */
+	// -------- **************** --------//
+
+	// -------- SECOND WAY--------//
+	// write logic in actions.js
+	// using axios
+
+	useEffect(() => {
+		const url = `https://jsonplaceholder.typicode.com/users`;
+		axios.get(url)
+			.then((result) => {
+				dispatch(setUsers(result.data));
+			})
+			.catch((err) => console.log(err));
+	}, [dispatch]);
+
 	const handleChange = (event) => {
 		setUserId(parseInt(event.target.value));
 	};
 
-	const handleRemoveUser = () => {
-		let resultArr = usersC.filter((user) => user.id !== userId);
-		let removedUser = usersC.filter((user) => user.id === userId);
-
-		setUserList(resultArr);
-		setUserRemoved(removedUser);
-	};
+	const handleRemoveUser = () => dispatch(removeUser(userId));
 
 	return (
 		<div>
@@ -48,8 +73,8 @@ const UsersC = () => {
 			</button>
 			<br />
 			<h2>Deleted User</h2>
-			<ul style={{ textAlign: "left" }}>
-				{userRemoved.map(({ id, name, email, address }) => (
+			{/* <ul style={{ textAlign: "left" }}>
+				{usersC.map(({ id, name, email, address }) => (
 					<li key={id}>
 						<h2>{id}</h2>
 						<p>Name:{name}</p>
@@ -63,11 +88,11 @@ const UsersC = () => {
 						<hr />
 					</li>
 				))}
-			</ul>
+			</ul> */}
 			<br />
 			<h2>Users List</h2>
 			<ul style={{ textAlign: "left" }}>
-				{userList.map(({ id, name, email, username, website }) => (
+				{usersC.map(({ id, name, email, username, website }) => (
 					<li key={id}>
 						<h2>{id}</h2>
 						<p>Name:{name}</p>
