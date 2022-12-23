@@ -49,9 +49,16 @@ const UsersC = () => {
 		const url = `https://jsonplaceholder.typicode.com/users`;
 		axios.get(url)
 			.then((result) => {
+				//send users into the store
+				// state userC has user now
+				// to display into the UI
 				dispatch(setUsers(result.data));
 			})
 			.catch((err) => console.log(err));
+		// Memoization
+		// caching the result of a function to avoid computation if there no change
+		//useMemo - cache the return value of a function
+		//useCallback - cache the callback function
 	}, [dispatch]);
 
 	const handleChange = (event) => {
