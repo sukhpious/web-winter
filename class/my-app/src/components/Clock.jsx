@@ -1,95 +1,122 @@
-// Section 1
+// // Section 1
 
-// Part 1
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-//simple js function
-/* // Part 2
-function tick() {
-	const element = (
-		<div>
-			<h1>Hello, world!</h1>
-			<h2>It is {new Date().toLocaleTimeString()}.</h2>
-		</div>
-	);
-	root.render(element);
-}
-*/
-
-// Part 3
-// setInterval(tick, 1000);
-
-// Section 2
-/* ----------- make it resusable ------------- */
-
-// To make resuable - functional component
-/*
-function Clock(props) {
-	return (
-		<div>
-			<h1>Hello, world!</h1>
-			<h2>It is {props.date.toLocaleTimeString()}.</h2>
-		</div>
-	);
-}
-
- */
+// // Part 1
+// // const root = ReactDOM.createRoot(document.getElementById("root"));
+// //simple js function
+// /* // Part 2
 // function tick() {
-// 	root.render(<Clock date={new Date()} />);
+// 	const element = (
+// 		<div>
+// 			<h1>Hello, world!</h1>
+// 			<h2>It is {new Date().toLocaleTimeString()}.</h2>
+// 		</div>
+// 	);
+// 	root.render(element);
+// }
+// */
+
+// // Part 3
+// // setInterval(tick, 1000);
+
+// // Section 2
+// /* ----------- make it resusable ------------- */
+
+// // To make resuable - functional component
+// /*
+// function Clock(props) {
+// 	return (
+// 		<div>
+// 			<h1>Hello, world!</h1>
+// 			<h2>It is {props.date.toLocaleTimeString()}.</h2>
+// 		</div>
+// 	);
 // }
 
-// Section 3
-/* -----------hide the implementation details ------------- */
-/* -----------converting to class component ------------- */
+//  */
+// // function tick() {
+// // 	root.render(<Clock date={new Date()} />);
+// // }
 
-/*
-class Clock extends React.Component {
-	render() {
-		return (
-			<div>
-				<h1>Hello, world!</h1>
-				<h2>It is {this.props.date.toLocaleTimeString()}.</h2>
-			</div>
-		);
-	}
-}
-*/
+// // Section 3
+// /* -----------hide the implementation details ------------- */
+// /* -----------converting to class component ------------- */
 
-// Section 3
-/* -----------add local state and update state ------------- */
-/* -----------add lifecycle methods ------------- */
+// /*
+// class Clock extends React.Component {
+// 	render() {
+// 		return (
+// 			<div>
+// 				<h1>Hello, world!</h1>
+// 				<h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+// 			</div>
+// 		);
+// 	}
+// }
+// */
 
-class Clock extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			date: new Date(),
-		};
-	}
-	componentDidMount() {
-		this.timerID = setInterval(() => this.tick(), 1000);
-	}
+// // Section 3
+// /* -----------add local state and update state ------------- */
+// /* -----------add lifecycle methods ------------- */
 
-	componentWillUnmount() {
-		clearInterval(this.timerID);
-	}
+// class Clock extends React.Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			date: new Date(),
+// 		};
+// 	}
+// 	componentDidMount() {
+// 		this.timerID = setInterval(() => this.tick(), 1000);
+// 	}
 
-	tick() {
-		this.setState({
-			date: new Date(),
-		});
-	}
+// 	componentWillUnmount() {
+// 		clearInterval(this.timerID);
+// 	}
 
-	render() {
-		return (
-			<div>
-				<h1>Hello, world!</h1>
-				<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-			</div>
-		);
-	}
-}
-// this component can be exported and there will be only one root element.
+// 	tick() {
+// 		//wrong
+// 		// this.state.date = new Date()
+// 		//will not render component
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// 		//Correct
+// 		this.setState({
+// 			date: new Date(),
+// 		});
 
-root.render(<Clock />);
+// 		//for asynchronous state
+// 		// this.setState({
+// 		// 	counter: this.state.counter + this.props.increment
+// 		// })
+// 		//passing object won't work
+
+// 		//pass function
+// 		// this.setState(()=> {
+
+// 		// })
+// 		// this.setState((state, props)=> {
+// 		// 	counter: state.counter + props.increment
+// 		// })
+
+// 		//without arrow syntax
+
+// 		// this.setState(function(props, state){
+// 		// 	return{
+// 		// 		counter: props.increment + state.counter
+// 		// 	}
+// 		// })
+// 	}
+
+// 	render() {
+// 		return (
+// 			<div>
+// 				<h1>Hello, world!</h1>
+// 				<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+// 			</div>
+// 		);
+// 	}
+// }
+// // this component can be exported and there will be only one root element.
+
+// // const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// // root.render(<Clock />);
