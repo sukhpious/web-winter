@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { useFakeLogin } from "../hook/useFakeLogin";
+import React, { useCallback, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import useFakeLogin from "../hook/useFakeLogin";
 
 // created the context variable to use
-export const AuthContext = React.createContext(null);
+export const AuthContext = createContext(null);
 
-export const AuthProvider = () => {
+const AuthProvider = ({ children }) => {
 	const fakeLogin = useFakeLogin();
 	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
@@ -13,8 +13,10 @@ export const AuthProvider = () => {
 	const login = useCallback(
 		async (from) => {
 			try {
-				const { data } = await fakeLogin();
-				setUser(data);
+				const user = await fakeLogin();
+				setUser(user);
+				// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
+				localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
 				navigate(from, { replace: true });
 			} catch (err) {
 				console.error(err);
@@ -25,6 +27,7 @@ export const AuthProvider = () => {
 
 	const logout =
 		(() => {
+			localStorage.removeItem("refreshToken");
 			setUser(null);
 			navigate("/");
 		},
@@ -33,7 +36,7 @@ export const AuthProvider = () => {
 	const value = { user, setUser, login, logout };
 	return (
 		// AuthContext takes value prop
-		<AuthContext.Provider value={value}>AuthProvider</AuthContext.Provider>
+		<AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 	);
 };
 export default AuthProvider;
