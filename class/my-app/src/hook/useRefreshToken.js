@@ -1,4 +1,3 @@
-import React from "react";
 import { useCallback } from "react";
 import useAuth from "./useAuth";
 const useRefreshToken = () => {
@@ -19,6 +18,7 @@ const useRefreshToken = () => {
 			}, 2000);
 		});
 
+		// not clear
 		setUser((prevUser) => ({ ...prevUser, ...response }));
 
 		return response.accessToken;

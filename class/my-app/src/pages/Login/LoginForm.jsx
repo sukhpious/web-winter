@@ -28,15 +28,33 @@ const LoginForm = () => {
 		emailRef.current.focus();
 	}, []);
 
+	//validation
 	useEffect(() => {
 		setValidEmail(EMAIL_REGEX.test(email) && email.length <= 50);
 		setValidPwd(pwd.length >= 4 && pwd.length <= 16);
 	}, [email, pwd]);
 
+	// error checking
 	useEffect(() => {
 		setErrMsg("");
 	}, [email, pwd]);
 
+	const userMatch = () => {
+		const emailChk = localStorage.getItem("UserEmail");
+		const pwdChk = localStorage.getItem("UserPwd");
+		const userName = localStorage.getItem("UserName");
+		const accessToken = localStorage.getItem("AccessToken");
+		if (email.toLowerCase == emailChk.toLowerCase && pwd.toLowerCase === pwdChk.toLowerCase) {
+			const user = {
+				id: "2",
+				name: userName,
+				accessToken: accessToken,
+			};
+			return user;
+		}
+	};
+
+	//login
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		setErrMsg("");
@@ -53,8 +71,10 @@ const LoginForm = () => {
 		}
 
 		try {
-			const user = await fakeLogin();
+			const user = await userMatch();
+
 			setUser(user);
+
 			// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
 			localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
 			navigate(from, { replace: true });
