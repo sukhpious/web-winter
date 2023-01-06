@@ -12,6 +12,9 @@ import NotFound from "./pages/NotFound";
 import PublicRoutes from "./components/layout/PublicRoutes";
 import PrivateRoutes from "./components/layout/PrivateRoutes";
 import PersistWrapper from "./components/layout/PersistWrapper";
+import Todos from "./pages/private/Todos";
+import Todo from "./pages/private/Todo";
+import NewTodo from "./pages/private/NewTodo";
 function App() {
 	return (
 		<Routes>
@@ -29,6 +32,14 @@ function App() {
 					<Route path="/admin" element={<Admin />}></Route>
 					<Route path="/super-admin" element={<SuperAdmin />}></Route>
 
+					<Route path="/todos" element={<Outlet />}>
+						{/* /todos */}
+						<Route index element={<Todos />} />
+						{/* /todos/abcdef */}
+						<Route path=":todosId" element={<Todo />} />
+						{/* /todos/new */}
+						<Route path="new" element={<NewTodo />} />
+					</Route>
 					{/* Nested Routes */}
 					{/* <Route path="/teams" element={<Outlet />}>
 						<Route index element={<Teams />}></Route>

@@ -40,18 +40,30 @@ const LoginForm = () => {
 	}, [email, pwd]);
 
 	const userMatch = () => {
-		const emailChk = localStorage.getItem("UserEmail");
-		const pwdChk = localStorage.getItem("UserPwd");
-		const userName = localStorage.getItem("UserName");
-		const accessToken = localStorage.getItem("AccessToken");
-		if (email.toLowerCase == emailChk.toLowerCase && pwd.toLowerCase === pwdChk.toLowerCase) {
-			const user = {
-				id: "2",
-				name: userName,
-				accessToken: accessToken,
-			};
-			return user;
-		}
+		const chkUserMatch = () => {
+			const emailChk = localStorage.getItem("UserEmail") ? localStorage.getItem("UserEmail") : null;
+			const pwdChk = localStorage.getItem("UserPwd") ? localStorage.getItem("UserEmail") : null;
+			const userName = localStorage.getItem("UserName") ? localStorage.getItem("UserEmail") : null;
+			// do not store in localStorage
+			// const accessToken = localStorage.getItem("AccessToken");
+
+			// ensure all exists
+			if (emailChk == null || pwdChk == null || userName == null) {
+				return;
+			}
+
+			if (email.toLowerCase == emailChk.toLowerCase && pwd.toLowerCase === pwdChk.toLowerCase) {
+				console.log("are you working???");
+				const user = {
+					id: "2",
+					name: userName,
+					// accessToken: accessToken,
+				};
+				return user;
+			}
+		};
+
+		return chkUserMatch;
 	};
 
 	//login
@@ -71,8 +83,10 @@ const LoginForm = () => {
 		}
 
 		try {
-			const user = await userMatch();
-
+			// changed to fakelogin
+			// error still appears
+			const user = await fakeLogin();
+			// const user = userMatch();
 			setUser(user);
 
 			// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie

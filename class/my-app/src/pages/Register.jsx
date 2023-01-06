@@ -52,8 +52,6 @@ const Register = () => {
 
 		setErrMsg("");
 
-		// from here
-
 		try {
 			// this is for authentication
 			const user = registerUser();
@@ -62,7 +60,6 @@ const Register = () => {
 			localStorage.setItem("UserEmail", `email: ${user.email}`);
 			localStorage.setItem("UserPwd", `password: ${user.pwd}`);
 			localStorage.setItem("UserName", `username: ${user.name}`);
-			localStorage.setItem("AccessToken", `access: ${user.accessToken}`);
 			navigate("/login");
 			console.log(user);
 		} catch (err) {

@@ -17,10 +17,9 @@ const useRefreshToken = () => {
 				resolve(user);
 			}, 2000);
 		});
-
-		// not clear
+		// setting user for auth
 		setUser((prevUser) => ({ ...prevUser, ...response }));
-
+		// refresh to get new token
 		return response.accessToken;
 	}, []);
 
