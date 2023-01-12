@@ -15,6 +15,8 @@ import PersistWrapper from "./components/layout/PersistWrapper";
 import Todos from "./pages/private/Todos";
 import Todo from "./pages/private/Todo";
 import NewTodo from "./pages/private/NewTodo";
+import Users from "./pages/users/Users";
+import User from "./pages/users/User";
 function App() {
 	return (
 		<Routes>
@@ -39,6 +41,11 @@ function App() {
 						<Route path=":todosId" element={<Todo />} />
 						{/* /todos/new */}
 						<Route path="new" element={<NewTodo />} />
+					</Route>
+					{/* Nested Routes */}
+					<Route path="/users" element={<Outlet />}>
+						<Route index element={<Users />} />
+						<Route path=":userId" element={<User />} />
 					</Route>
 					{/* Nested Routes */}
 					{/* <Route path="/teams" element={<Outlet />}>
